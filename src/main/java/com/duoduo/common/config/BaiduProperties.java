@@ -8,7 +8,6 @@ import java.util.Map;
 
 /**
  * @author lixiaolong
- * @company 深圳和而泰智能控制股份有限公司
  * @create 2019-05-06 10:08
  */
 @Data

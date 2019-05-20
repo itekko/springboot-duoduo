@@ -29,6 +29,10 @@ spring:
   #redis配置
   redis:
     host: 127.0.0.1
+  security:
+    user:
+      name: root
+      password: root
 #  security:
 #    user:
 #      name: root
@@ -65,5 +69,4 @@ mybatis-plus:
     cache-enabled: false
     #配置JdbcTypeForNull, oracle数据库必须配置
     #jdbc-type-for-null: 'null'
-
 

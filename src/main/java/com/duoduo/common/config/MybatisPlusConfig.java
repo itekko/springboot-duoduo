@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author lixiaolong
- * @company 深圳和而泰智能控制股份有限公司
  * @create 2019-04-26 10:51
  */
 @Configuration

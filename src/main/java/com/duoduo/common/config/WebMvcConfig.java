@@ -12,7 +12,6 @@ import java.util.Locale;
 
 /**
  * @author lixiaolong
- * @company 深圳和而泰智能控制股份有限公司
  * @create 2019-05-09 9:11
  */
 //@Configuration

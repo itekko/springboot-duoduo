@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 
 /**
  * @author lixiaolong
- * @company 深圳和而泰智能控制股份有限公司
  * @create 2019-05-08 14:07
  */
 @Data

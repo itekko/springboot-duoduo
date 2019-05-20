@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 */
 /**
  * @author lixiaolong
- * @company 深圳和而泰智能控制股份有限公司
  * @create 2019-05-08 17:47
  *//*
 

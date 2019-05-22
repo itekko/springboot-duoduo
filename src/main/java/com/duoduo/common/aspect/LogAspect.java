@@ -2,7 +2,6 @@ package com.duoduo.common.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,44 +53,44 @@ public class LogAspect {
         saveLog(point, time);
         return result;
     }
-    
+
     @Pointcut("execution(public * com.duoduo.*.controller.*.*(..))")
     public void logController(){}
-    
+
     /** 记录controller日志，包括请求、ip、参数、响应结果 */
     @Around("logController()")
     public Object controller(ProceedingJoinPoint point) throws Throwable {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         log.info("{} {} {} {}.{}{}", request.getMethod(), request.getRequestURI(), IPUtils.getIpAddr(request), point.getTarget().getClass().getSimpleName(), point.getSignature().getName(), Arrays.toString(point.getArgs()));
-        
+
         long beginTime = System.currentTimeMillis();
         Object result = point.proceed();
         long time = System.currentTimeMillis() - beginTime;
-        
+
         log.info("result({}) {}", time, JSONUtil.toJsonStr(result));
         return result;
     }
-    
+
     @Pointcut("execution(public * com.duoduo.*.service.*.*(..))")
     public void logService(){}
-    
+
     /** 记录自定义service接口日志，如果要记录CoreService所有接口日志请仿照logMapper切面 */
     @Around("logService()")
     public Object service(ProceedingJoinPoint point) throws Throwable {
     	log.info("call {}.{}{}", point.getTarget().getClass().getSimpleName(), point.getSignature().getName(), Arrays.toString(point.getArgs()));
-    	
+
     	long beginTime = System.currentTimeMillis();
     	Object result = point.proceed();
     	long time = System.currentTimeMillis() - beginTime;
-    	
+
     	log.info("result({}) {}", time, JSONUtil.toJsonStr(result));
     	return result;
     }
-    
+
     @Pointcut("within(com.baomidou.mybatisplus.core.mapper.BaseMapper+)")
     public void logMapper(){}
-    
+
     /** 记录mapper所有接口日志，设置createBy和updateBy基础字段，logback会记录sql，这里记录查库返回对象 */
     /*@Around("logMapper()")
     public Object mapper(ProceedingJoinPoint point) throws Throwable {
@@ -122,12 +121,12 @@ public class LogAspect {
     			}
     		}
     	}
-    	
+
     	log.info("call {}.{}{}", point.getTarget().getClass().getSimpleName(), methodName, Arrays.toString(point.getArgs()));
     	long beginTime = System.currentTimeMillis();
     	Object result = point.proceed();
     	long time = System.currentTimeMillis() - beginTime;
-    	
+
     	log.info("result({}) {}", time, JSONUtils.beanToJson(result));
     	return result;
     }*/

@@ -1,7 +1,11 @@
 package com.duoduo.system.entity;
 
+import com.duoduo.common.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -10,27 +14,21 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author ekko
- * @since 2019-05-08
+ * @since 2019-05-22
  */
 @Data
-@Accessors(chain = true)
-@TableName("t_system_role_resource")
+@ApiModel(value="RoleResource对象", description="系统角色资源中间表")
 public class RoleResource {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键ID
-     */
+    @ApiModelProperty(value = "ID")
     private Long id;
-    /**
-     * 资源ID
-     */
+
+    @ApiModelProperty(value = "资源ID")
     private Long resourceId;
 
-    /**
-     * 角色ID
-     */
+    @ApiModelProperty(value = "角色ID")
     private Long roleId;
 
 

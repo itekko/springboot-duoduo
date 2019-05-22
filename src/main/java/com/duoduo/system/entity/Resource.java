@@ -2,7 +2,8 @@ package com.duoduo.system.entity;
 
 import com.duoduo.common.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -13,49 +14,36 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author ekko
- * @since 2019-05-08
+ * @since 2019-05-22
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("t_system_resource")
+@ApiModel(value="Resource对象", description="系统资源表")
 public class Resource extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 父主键，当值为0顶级父ID
-     */
+    @ApiModelProperty(value = "父主键，当值为0顶级父ID")
     private Long pid;
 
-    /**
-     * 资源名称
-     */
+    @ApiModelProperty(value = "资源名称")
     private String name;
 
-    /**
-     * 权限标识
-     */
+    @ApiModelProperty(value = "权限标识")
     private String permission;
 
-    /**
-     * 菜单地址
-     */
+    @ApiModelProperty(value = "菜单地址")
     private String url;
 
-    /**
-     * 类型   0：目录   1：菜单   2：按钮
-     */
+    @ApiModelProperty(value = "类型   0：目录   1：菜单   2：按钮")
     private Boolean type;
 
-    /**
-     * 菜单图标
-     */
+    @ApiModelProperty(value = "菜单图标")
     private String icon;
 
-    /**
-     * 排序
-     */
+    @ApiModelProperty(value = "排序")
     private Integer order;
 
 

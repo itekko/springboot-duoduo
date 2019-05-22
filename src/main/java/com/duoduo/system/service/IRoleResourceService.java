@@ -1,16 +1,16 @@
 package com.duoduo.system.service;
 
-import com.duoduo.system.entity.Dictionary;
+import com.duoduo.system.entity.RoleResource;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 系统字典表 服务类
+ * 系统角色资源中间表 服务类
  * </p>
  *
  * @author ekko
  * @since 2019-05-22
  */
-public interface IDictionaryService extends IService<Dictionary> {
+public interface IRoleResourceService extends IService<RoleResource> {
 
 }

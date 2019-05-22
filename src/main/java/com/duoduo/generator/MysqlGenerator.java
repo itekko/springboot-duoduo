@@ -58,6 +58,9 @@ public class MysqlGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("ekko");
         gc.setOpen(false);
+        //gc.setBaseResultMap(true);
+        gc.setBaseColumnList(true);
+        gc.setSwagger2(true);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -83,12 +86,21 @@ public class MysqlGenerator {
             }
         };
         List<FileOutConfig> focList = new ArrayList<>();
-        focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
+        focList.add(new FileOutConfig("/templates/duoduoMapper.xml.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
                 return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+            }
+        });
+        String replace = pc.getParent().replace(".", "/");
+        focList.add(new FileOutConfig("/templates/duoduoController.java.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输入文件名称
+                return projectPath + "/src/main/java/" + replace  + "/controller"
+                        + "/" + tableInfo.getEntityName() + "Controller" + StringPool.DOT_JAVA;
             }
         });
         cfg.setFileOutConfigList(focList);
@@ -101,11 +113,13 @@ public class MysqlGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setSuperEntityClass("com.duoduo.common.entity.BaseEntity");
         strategy.setEntityLombokModel(true);
-        strategy.setSuperControllerClass("com.baomidou.mybatisplus.extension.api.ApiController");
+        //strategy.setSuperControllerClass("com.baomidou.mybatisplus.extension.api.ApiController");
         strategy.setInclude(scanner("表名"));
-        strategy.setSuperEntityColumns("id","remark","status","version","deleted","createBy","updateBy","createTime","updateTime");
+        strategy.setEntityLombokModel(true);
+        strategy.setSuperEntityColumns("id","remark","status","version","deleted","create_by","update_by","create_time","update_time");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix("t_" + pc.getModuleName() + "_");
+        strategy.setRestControllerStyle(true);
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());

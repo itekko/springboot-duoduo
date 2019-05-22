@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoduo.system.mapper.RoleResourceMapper">
 
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id as id,
+        resource_id as resourceId,
+        role_id as roleId
+    </sql>
+
 </mapper>

@@ -2,4 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoduo.system.mapper.LogMapper">
 
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id as id,
+        remark as remark,
+        status as status,
+        version as version,
+        deleted as deleted,
+        create_by as createBy,
+        update_by as updateBy,
+        create_time as createTime,
+        update_time as updateTime,
+        user_id as userId,
+        username as username,
+        operation as operation,
+        time as time,
+        method as method,
+        params as params,
+        ip as ip
+    </sql>
+
 </mapper>

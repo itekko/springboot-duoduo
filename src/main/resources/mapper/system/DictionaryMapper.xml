@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duoduo.system.mapper.DictionaryMapper">
 
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id as id,
+        remark as remark,
+        status as status,
+        version as version,
+        deleted as deleted,
+        create_by as createBy,
+        update_by as updateBy,
+        create_time as createTime,
+        update_time as updateTime,
+        name as name,
+        value as value,
+        type as type,
+        order as order
+    </sql>
+
 </mapper>

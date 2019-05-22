@@ -43,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         User user = baseMapper.selectOne(new QueryWrapper<>(new User().setUsername(username)));
         if (user != null) {
             List<Role> roleList = roleMapper.selectListByUserId(user.getId());
-            user.setAuthorities(roleList);
+            user.setRoleList(roleList);
         }
         return user;
     }

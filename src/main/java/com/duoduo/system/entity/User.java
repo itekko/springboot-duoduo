@@ -66,7 +66,7 @@ public class User extends BaseEntity implements Serializable, UserDetails {
      */
     @ApiModelProperty("角色列表")
     @TableField(exist=false)
-    private List<Role> authorities;
+    private List<Role> roleList;
 
 
     @Override

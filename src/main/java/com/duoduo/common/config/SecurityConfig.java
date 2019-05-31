@@ -11,12 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 /**
+ * spring security安全配置
  * @author lixiaolong
  * @create 2019-05-08 17:47
  */
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     /**
      * 加密工具类
@@ -30,7 +32,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+         //super.configure(http);
+            http.formLogin()
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")//配置登录页面
+                .successForwardUrl("/index.html")
+                .failureForwardUrl("/login.html")
+                .and()
+                .authorizeRequests().antMatchers(
+                "/login.html",
+                            "/**/*.js",
+                            "/**/*.css",
+                            "/**/*.jpg",
+                            "/**/*.png",
+                            "/**/*.gif",
+                            "/**/*.woff",
+                            "/**/*.woff2",
+                            "/**/*.ico") //排除静态文件
+                .permitAll()
+                .anyRequest().authenticated()
+                .and().csrf().disable();
     }
+
 }
 

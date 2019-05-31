@@ -35,10 +35,10 @@ public class Area extends BaseEntity {
     private String code;
 
     @ApiModelProperty(value = "排序")
-    private Integer order;
+    private Integer sort;
 
     @ApiModelProperty(value = "类型,0:全国，1：省，2：城市，3：县，4：镇，5：村")
-    private Boolean type;
+    private Integer type;
 
 
 }

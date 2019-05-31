@@ -68,7 +68,9 @@ public class LogAspect {
         Object result = point.proceed();
         long time = System.currentTimeMillis() - beginTime;
 
-        log.info("result({}) {}", time, JSONUtil.toJsonStr(result));
+        if(result != null){
+            log.info("result({}) {}", time, JSONUtil.toJsonStr(result));
+        }
         return result;
     }
 

@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * 系统角色资源中间表
@@ -18,7 +20,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @ApiModel(value="RoleResource对象", description="系统角色资源中间表")
-public class RoleResource {
+@TableName("t_system_role_resource")
+public class RoleResource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

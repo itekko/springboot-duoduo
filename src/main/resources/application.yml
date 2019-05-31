@@ -1,3 +1,4 @@
+
 #图像识别文字功能配置
 duoduo:
   baidu:
@@ -29,6 +30,8 @@ spring:
   #redis配置
   redis:
     host: 127.0.0.1
+  main:
+    allow-bean-definition-overriding: true #配置可重复定义的bean
 
 
 mybatis-plus:
@@ -63,4 +66,4 @@ mybatis-plus:
     cache-enabled: false
     #配置JdbcTypeForNull, oracle数据库必须配置
     #jdbc-type-for-null: 'null'
-
+#debug: true

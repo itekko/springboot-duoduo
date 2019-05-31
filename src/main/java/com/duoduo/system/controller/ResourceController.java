@@ -1,9 +1,9 @@
 package com.duoduo.system.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.duoduo.common.annotation.Log;
 import com.duoduo.common.util.Result;
 import com.duoduo.system.entity.Resource;
@@ -103,5 +103,18 @@ public class ResourceController {
     public Result remove(@PathVariable("id") Long id){
         return Result.ok(resourceService.removeById(id));
     }
+
+    /**
+     * 系统资源树
+     * @return
+     */
+    @Log("系统资源树")
+    @GetMapping("/tree")
+    @ApiOperation("系统资源树")
+    public Result<List<Resource>> tree(){
+        return Result.ok(resourceService.tree());
+    }
+
+
 
 }

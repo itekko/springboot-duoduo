@@ -1,19 +1,23 @@
 package com.duoduo.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.duoduo.system.entity.Role;
+import com.duoduo.system.entity.Resource;
 import com.duoduo.system.entity.User;
+import com.duoduo.system.mapper.ResourceMapper;
 import com.duoduo.system.mapper.RoleMapper;
 import com.duoduo.system.mapper.UserMapper;
 import com.duoduo.system.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -26,11 +30,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService, UserDetailsService {
 
-    /**
-     * 角色mapper
-     */
     @Autowired
-    private RoleMapper roleMapper;
+    private ResourceMapper resourceMapper;
     /**
      * 根据用户名查询用户信息
      * @param username
@@ -42,8 +43,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         User user = baseMapper.selectOne(new QueryWrapper<>(new User().setUsername(username)));
         if (user != null) {
-            List<Role> roleList = roleMapper.selectListByUserId(user.getId());
-            user.setRoleList(roleList);
+            List<Resource>  resources = resourceMapper.selectListByUser(user);
+            if(!CollectionUtils.isEmpty(resources)){
+                Set<String> permissions = Sets.newHashSet();
+                resources.forEach(resource -> permissions.add(resource.getPermission()));
+                user.setPermissions(permissions);
+            }
+
         }
         return user;
     }

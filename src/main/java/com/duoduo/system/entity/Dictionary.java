@@ -35,7 +35,7 @@ public class Dictionary extends BaseEntity {
     private String type;
 
     @ApiModelProperty(value = "排序")
-    private Integer order;
+    private Integer sort;
 
 
 }

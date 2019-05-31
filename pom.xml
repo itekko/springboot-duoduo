@@ -21,6 +21,7 @@
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <swagger.version>2.9.2</swagger.version>
         <swagger-bootstrap-ui.version>1.9.3</swagger-bootstrap-ui.version>
+        <easypoi-spring-boot-starter.version>4.0.0</easypoi-spring-boot-starter.version>
     </properties>
 
     <dependencies>
@@ -112,6 +113,12 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>${swagger-bootstrap-ui.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>${easypoi-spring-boot-starter.version}</version>
         </dependency>
 
     </dependencies>

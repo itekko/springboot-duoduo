@@ -35,10 +35,10 @@ public class Organization extends BaseEntity {
     private String code;
 
     @ApiModelProperty(value = "排序")
-    private Integer order;
+    private Integer sort;
 
     @ApiModelProperty(value = "类型")
-    private Boolean type;
+    private Integer type;
 
 
 }

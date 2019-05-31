@@ -56,12 +56,14 @@ public class BaseEntity implements Serializable {
      * 创建人
      */
     @ApiModelProperty("创建人")
+    @TableField(fill = FieldFill.INSERT)
     private Long createBy;
 
     /**
      * 更新人
      */
     @ApiModelProperty("更新人")
+    @TableField(fill = FieldFill.UPDATE)
     private Long updateBy;
 
     /**

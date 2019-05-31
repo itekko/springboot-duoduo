@@ -1,5 +1,7 @@
 package com.duoduo.system.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+import cn.afterturn.easypoi.excel.annotation.ExcelTarget;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.duoduo.common.entity.BaseEntity;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -26,6 +29,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("t_system_user")
+@ExcelTarget("user")
 public class User extends BaseEntity implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -33,6 +37,7 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     /**
      * 用户名
      */
+    @Excel(name="用户名")
     @ApiModelProperty("用户名")
     private String username;
 
@@ -46,18 +51,21 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     /**
      * 图片
      */
+    @Excel(name="图片")
     @ApiModelProperty("图片")
     private String image;
 
     /**
      * 手机号
      */
+    @Excel(name="手机号")
     @ApiModelProperty("手机号")
     private String phone;
 
     /**
      * 邮箱
      */
+    @Excel(name="邮箱")
     @ApiModelProperty("邮箱")
     private String email;
 
@@ -67,6 +75,13 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     @ApiModelProperty("角色列表")
     @TableField(exist=false)
     private List<Role> roleList;
+
+    /**
+     * 权限
+     */
+    @ApiModelProperty("权限")
+    @TableField(exist=false)
+    private Set<String> permissions;
 
 
     @Override
@@ -107,6 +122,6 @@ public class User extends BaseEntity implements Serializable, UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return true;
+        return getDeleted().equals(0);
     }
 }

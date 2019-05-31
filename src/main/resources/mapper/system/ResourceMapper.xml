@@ -23,4 +23,12 @@
         order as order
     </sql>
 
+    <select id="selectListByUser" resultType="com.duoduo.system.entity.Resource" parameterType="com.duoduo.system.entity.User">
+        select * from t_system_resource where id in(
+           select resource_id from t_system_role_resource where role_id in(
+                select role_id from t_system_user_role where user_id = #{id}
+           )
+        )
+    </select>
+
 </mapper>

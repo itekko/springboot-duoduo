@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.duoduo.common.annotation.Log;
+import com.duoduo.common.util.PoiUtil;
 import com.duoduo.common.util.Result;
 import com.duoduo.system.entity.User;
 import com.duoduo.system.service.IUserService;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -116,5 +118,16 @@ public class UserController{
     public Result remove(@PathVariable("id") Long id){
         return Result.ok(userService.removeById(id));
     }
+
+
+    @PostMapping("/export")
+    public void export(HttpServletResponse response, @RequestBody User user){
+        List<User> list = userService.list(new QueryWrapper<>(user));
+        if(!CollectionUtils.isEmpty(list)){
+            PoiUtil.exportExcel(list,"用户管理","用户列表",User.class,"用户管理.xls",response);
+        }
+
+    }
+
 
 }

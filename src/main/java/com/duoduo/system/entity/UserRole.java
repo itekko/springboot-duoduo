@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * 系统用户角色中间表
@@ -19,7 +21,7 @@ import lombok.experimental.Accessors;
 @Data
 @TableName("t_system_user_role")
 @ApiModel(value="UserRole对象", description="系统用户角色中间表")
-public class UserRole {
+public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -6,7 +6,6 @@ import com.duoduo.system.entity.User;
 import org.apache.ibatis.reflection.MetaObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 /**
  * 填充器数据
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author ekko 2018-08-10 22:59:23.
  */
 //@Component
-public class BaseMetaObjectHandler implements MetaObjectHandler {
+public class  BaseMetaObjectHandler implements MetaObjectHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseMetaObjectHandler.class);
 

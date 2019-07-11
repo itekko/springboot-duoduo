@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import cn.hutool.json.JSONUtil;
 import com.duoduo.common.util.HttpContextUtils;
@@ -142,6 +143,8 @@ public class LogAspect {
      * @param time
      */
     private void saveLog(ProceedingJoinPoint joinPoint, long time) {
+        //HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        //HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getResponse();
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         com.duoduo.system.entity.Log sysLog = new com.duoduo.system.entity.Log();
@@ -171,19 +174,6 @@ public class LogAspect {
         	params = params.substring(0, maxLength);
         }
         sysLog.setParams(params);
-        // 用户名
-    	/*UserDO currUser = ShiroUtils.getSysUser();
-    	if (null == currUser) {
-    		sysLog.setUserId(-1L);
-    		sysLog.setUsername("");
-    	} else {
-    		sysLog.setUserId(currUser.getId());
-    		sysLog.setUsername(currUser.getUsername());
-    	}
-        sysLog.setTime((int) time);
-        // 系统当前时间
-        Date date = new Date();
-        sysLog.setGmtCreate(date);*/
         // 保存系统日志
         logMapper.insert(sysLog);
     }

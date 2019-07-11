@@ -1,22 +1,3 @@
-
-#图像识别文字功能配置
-duoduo:
-  baidu:
-    ocr:
-      appId: 16177245
-      apiKey: jmYqeL8TK5Gu4mFx7XEhV2qH
-      secretKey: DML8mWGt0KwFluGMnOjM3T2n5nLfO8DE
-    token:
-      url: https://aip.baidubce.com/oauth/2.0/token
-      grantType: client_credentials
-    urlMap:
-       general_basic:
-         url: https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic
-         method: 1
-       accurate_basic:
-         url: https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic
-         method: 1
-
 #端口
 server:
   port: 8888
@@ -67,3 +48,4 @@ mybatis-plus:
     #配置JdbcTypeForNull, oracle数据库必须配置
     #jdbc-type-for-null: 'null'
 #debug: true
+
